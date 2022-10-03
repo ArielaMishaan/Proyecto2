@@ -21,38 +21,74 @@ public class Libro{
     }
 
 
+    
+    /** 
+     * @return String
+     */
     public String getNombre() {
         return this.nombre;
     }
 
+    
+    /** 
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getTema() {
         return this.tema;
     }
 
+    
+    /** 
+     * @param tema
+     */
     public void setTema(String tema) {
         this.tema = tema;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getPaginas() {
         return this.paginas;
     }
 
+    
+    /** 
+     * @param paginas
+     */
     public void setPaginas(int paginas) {
         this.paginas = paginas;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getIdioma() {
         return this.idioma;
     }
 
+    
+    /** 
+     * @param idioma
+     */
     public void setIdioma(String idioma) {
         this.idioma = idioma;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "Nombre: " + getNombre() + "\n" +
@@ -63,3 +99,4 @@ public class Libro{
 
 
 }
+
