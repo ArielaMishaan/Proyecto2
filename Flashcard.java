@@ -31,6 +31,13 @@ public class Flashcard {
         this.lado2 = lado2;
     }
 
+    public String darVuelta2(){
+        return lado2;
+    }
+
+    public String darVuelta1(){
+        return lado1;
+    }
 
     @Override
     public String toString() {
@@ -39,3 +46,4 @@ public class Flashcard {
     }
     
 }
+
