@@ -3,8 +3,10 @@ import java.util.Scanner;
 public class Principal{
     public static void main (String[] args){
         Scanner teclado = new Scanner (System.in);
+        Persona persona = new Persona();
         int opcion = 0;
         boolean continuar = true;
+        
         String menu = "1. Crear Usuario. \n2. Iniciar sesión \n3. Crear Lista \n4. Estudiar Lista. \n5. Mostrar lista de estudios. \n6. Sección libros. \n7. Metas. \n8. Salir. ";
 
         while (continuar){
@@ -22,6 +24,15 @@ public class Principal{
                         break;
                     }
                     case 3:{
+                        System.out.println("Introduzca el tema de su flashcard: ");
+                        String tema = teclado.nextLine();
+                        persona.agregarNuevaListaFlashcards(tema);
+                        System.out.println("¿Cuántas Flashcards desea crear?");
+                        int cantidad = teclado.nextInt();
+                        teclado.nextLine();
+                        
+                        for ()
+
                         break;
                     }
                     case 4:{
