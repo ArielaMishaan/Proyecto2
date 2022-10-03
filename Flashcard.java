@@ -34,10 +34,8 @@ public class Flashcard {
 
     @Override
     public String toString() {
-        return "{" +
-            " lado1='" + getLado1() + "'" +
-            ", lado2='" + getLado2() + "'" +
-            "}";
+        return "Lado1: " + getLado1() + "\n" +
+            "Lado2: " + getLado2() + "\n";
     }
     
 }

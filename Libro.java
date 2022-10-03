@@ -55,12 +55,10 @@ public class Libro{
 
     @Override
     public String toString() {
-        return "{" +
-            " nombre='" + getNombre() + "'" +
-            ", tema='" + getTema() + "'" +
-            ", paginas='" + getPaginas() + "'" +
-            ", idioma='" + getIdioma() + "'" +
-            "}";
+        return "Nombre:" + getNombre() + "\n" +
+            "Tema:" + getTema() + "\n" +
+            "Paginas:" + getPaginas() + "\n" +
+            "Idioma:" + getIdioma() + "\n";
     }
 
 
