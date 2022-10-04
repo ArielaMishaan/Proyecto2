@@ -104,6 +104,11 @@ public class Persona{
         return resultado;
     }
 
+    public String desplegarListaEspecifica(int num){
+        ListaFlashcards actual = listaListaFlashcards.get(num-1);
+        return listaListaFlashcards.get(num).toString();
+    }
+
     @Override
     public String toString() {
         return "" +

@@ -7,7 +7,7 @@ public class Principal{
         int opcion = 0;
         boolean continuar = true;
         
-        String menu = "1. Crear Usuario. \n2. Iniciar sesión \n3. Crear Lista \n4. Estudiar Lista. \n5. Mostrar lista de estudios. \n6. Sección libros. \n7. Metas. \n8. Salir. ";
+        String menu = "\nLERNEN\n1. Crear Usuario. \n2. Iniciar sesión \n3. Crear Lista \n4. Estudiar Lista. \n5. Mostrar lista de estudios. \n6. Sección libros. \n7. Metas. \n8. Salir. ";
 
         while (continuar){
             try{
@@ -32,11 +32,11 @@ public class Principal{
                         int cantidad = teclado.nextInt();
                         teclado.nextLine();
                         for (int i = 0; i<cantidad; i++){
-                            System.out.println("Escriba el lado 1 de su flashcard");
+                            System.out.println("Escriba el lado 1 de su flashcard " + (i+1));
                             String lado1 = teclado.nextLine();
-                            System.out.println("Escriba el lado 2 de su flashcard");
+                            System.out.println("Escriba el lado 2 de su flashcard " + (i+1));
                             String lado2 = teclado.nextLine();
-                            persona.agregarFlashcard2(persona.getListaListaFlashcards().size()-1, lado1, lado2);
+                            persona.agregarFlashcard2((persona.getListaListaFlashcards().size()-1), lado1, lado2);
                         }
                         break;
                     }
@@ -44,6 +44,12 @@ public class Principal{
                         break;
                     }
                     case 5:{
+                        System.out.print(persona.desplegarListas());
+                        System.out.println("\n¿Qué lista desea visualizar (número)?");
+                        int num = teclado.nextInt();
+                        teclado.nextLine();
+                        System.out.println("hola");
+                        System.out.println(persona.desplegarListaEspecifica(num));
                         break;
                     }
                     case 6:{
@@ -53,6 +59,8 @@ public class Principal{
                         break;
                     }
                     case 8:{
+                        continuar = false;
+                        System.out.println("Ojalá ganes el parcial pai ;)");
                         break;
                     }
                     default:{
@@ -63,7 +71,7 @@ public class Principal{
                 }
             }catch (Exception e){
                 teclado.nextLine();
-                System.out.println("Entreda incorrecta. Por favor verifique que no ingresó un número incorrecto.");
+                System.out.println("Entrada incorrecta. Por favor verifique que no ingresó un número incorrecto.");
             }   
         }    
     }
