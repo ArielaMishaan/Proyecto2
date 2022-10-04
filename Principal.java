@@ -31,11 +31,12 @@ public class Principal{
                         System.out.println("¿Cuántas Flashcards desea crear?");
                         int cantidad = teclado.nextInt();
                         teclado.nextLine();
+                        
                         for (int i = 0; i<cantidad; i++){
                             System.out.println("Escriba el lado 1 de su flashcard " + (i+1));
                             String lado1 = teclado.nextLine();
                             System.out.println("Escriba el lado 2 de su flashcard " + (i+1));
-                            String lado2 = "dd";
+                            String lado2 = teclado.nextLine();
                             persona.agregarFlashcard2((persona.getListaListaFlashcards().size()-1), lado1, lado2);
                         }
                         break;
@@ -48,7 +49,7 @@ public class Principal{
                         System.out.println("\n¿Qué lista desea visualizar (número)?");
                         int num = teclado.nextInt();
                         teclado.nextLine();
-                        System.out.println("hola");
+                        
                         System.out.println(persona.desplegarListaEspecifica(num));
                         break;
                     }

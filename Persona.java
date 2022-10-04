@@ -90,7 +90,7 @@ public class Persona{
     }
 
     public void agregarFlashcard2(int numLista, String lado1, String lado2){
-        ListaFlashcards actual = listaListaFlashcards.get(numLista -1);
+        ListaFlashcards actual = listaListaFlashcards.get( numLista);
         actual.agregarFlashcard(lado1, lado2);
     }
 
@@ -106,7 +106,7 @@ public class Persona{
 
     public String desplegarListaEspecifica(int num){
         ListaFlashcards actual = listaListaFlashcards.get(num-1);
-        return listaListaFlashcards.get(num).toString();
+        return actual.toString();
     }
 
     @Override

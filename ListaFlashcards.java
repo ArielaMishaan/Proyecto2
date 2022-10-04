@@ -38,8 +38,10 @@ public class ListaFlashcards{
     @Override
     public String toString() {
         String resultado = "";
+        int i = 1;
+
         for (Flashcard flashcard : listaFlashcards) {
-            resultado = resultado + flashcard.toString();
+            resultado = resultado + "\n\nFlashcard " + i + "\n " + flashcard.toString();
         }
 
         return resultado;
