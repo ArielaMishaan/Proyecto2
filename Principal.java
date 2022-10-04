@@ -35,7 +35,7 @@ public class Principal{
                             System.out.println("Escriba el lado 1 de su flashcard " + (i+1));
                             String lado1 = teclado.nextLine();
                             System.out.println("Escriba el lado 2 de su flashcard " + (i+1));
-                            String lado2 = teclado.nextLine();
+                            String lado2 = "dd";
                             persona.agregarFlashcard2((persona.getListaListaFlashcards().size()-1), lado1, lado2);
                         }
                         break;
