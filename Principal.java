@@ -18,6 +18,7 @@ public class Principal{
                 
                 switch (opcion){
                     case 1:{
+                        
                         break;
                     }
                     case 2:{
