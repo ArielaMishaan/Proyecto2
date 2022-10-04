@@ -30,9 +30,13 @@ public class Principal{
                         System.out.println("¿Cuántas Flashcards desea crear?");
                         int cantidad = teclado.nextInt();
                         teclado.nextLine();
-                        
-                        for ()
-
+                        for (int i = 0; i<cantidad; i++){
+                            System.out.println("Escriba el lado 1 de su flashcard");
+                            String lado1 = teclado.nextLine();
+                            System.out.println("Escriba el lado 2 de su flashcard");
+                            String lado2 = teclado.nextLine();
+                            persona.agregarFlashcard2(persona.getListaListaFlashcards().size()-1, lado1, lado2);
+                        }
                         break;
                     }
                     case 4:{

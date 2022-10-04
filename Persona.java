@@ -84,7 +84,7 @@ public class Persona{
     
 
     public void agregarNuevaListaFlashcards(String tema){
-        Flashcard lista = new Flashcard();
+        ArrayList<Flashcard> lista = new  ArrayList<Flashcard>();
         ListaFlashcards listaNueva = new ListaFlashcards(tema, lista);
         listaListaFlashcards.add(listaNueva);
     }
