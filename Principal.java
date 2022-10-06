@@ -11,20 +11,22 @@ public class Principal{
 
         while (continuar){
             try{
+                
                 System.out.println(menu);
-                System.out.println("Seleccione una opción: ");
+                System.out.println("\nSeleccione una opción: ");
                 opcion = teclado.nextInt();
                 teclado.nextLine();
                 
                 switch (opcion){
-                    case 1:{
+                    case 1:{ //Crear usuario
                         
                         break;
                     }
-                    case 2:{
+                    case 2:{ //Iniciar sesión
                         break;
                     }
-                    case 3:{
+                    case 3:{ //Crear lista
+                        
                         System.out.println("Introduzca el tema de su flashcard: ");
                         String tema = teclado.nextLine();
                         persona.agregarNuevaListaFlashcards(tema);
@@ -41,10 +43,11 @@ public class Principal{
                         }
                         break;
                     }
-                    case 4:{
+                    case 4:{ //Estudiar lista
                         break;
                     }
-                    case 5:{
+                    case 5:{ //Mostrar lista
+                        
                         System.out.print(persona.desplegarListas());
                         System.out.println("\n¿Qué lista desea visualizar (número)?");
                         int num = teclado.nextInt();
@@ -53,13 +56,72 @@ public class Principal{
                         System.out.println(persona.desplegarListaEspecifica(num));
                         break;
                     }
-                    case 6:{
+                    case 6:{ //Sección de libros
+                        
+                        String menuLibros = "\nLIBROS\n1. Ingresar libro\n2. Mostrar libros\n3. Salir de la sección libros";
+                        int opcionLibros = 0;
+                        boolean continuarLibros = true;
+
+                        while(continuarLibros){
+                            System.out.println(menuLibros);
+                            System.out.println("\nSeleccione una opción: ");
+                            opcionLibros = teclado.nextInt();
+                            teclado.nextLine();
+
+                            switch (opcionLibros) {
+
+                                case 1: //Ingresar libro
+
+                                    String nombre = "";
+                                    String tema = "";
+                                    int paginas = 0;
+                                    String idioma = "";
+                                    
+                                    System.out.println("Ingrese el título del libro que terminó de leer: ");
+                                    nombre = teclado.nextLine();
+                                    
+                                    System.out.println("Ingrese el tema del libro que terminó de leer: ");  
+                                    tema = teclado.nextLine();  
+                                    
+                                    System.out.println("Ingrese el número de páginas del libro que terminó de leer: ");  
+                                    paginas = teclado.nextInt();
+                                    teclado.nextLine();
+                                    
+                                    System.out.println("Ingrese el idioma del libro que terminó de leer: ");  
+                                    idioma = teclado.nextLine();                                 
+                                    
+                                    persona.agregarLibro(nombre, tema, paginas, idioma);
+                                    
+                                    break;
+                                
+                                case 2: //Mostrar libros
+                                
+                                    if (persona.getListaLibros().size() != 0){
+                                        System.out.println(persona.mostrarLibros());
+                                    }
+                                    else{
+                                        System.out.println("No hay libros para mostrar.");
+                                    }
+
+                                    break;
+                                
+                                case 3: //Salir de la sección de libros
+                                    continuarLibros = false;
+                                    break;
+                                
+                                default:
+                                break;
+                            }
+                        }
+
                         break;
                     }
-                    case 7:{
+
+                    case 7:{ //Metas
                         break;
                     }
-                    case 8:{
+
+                    case 8:{ //Salir
                         continuar = false;
                         System.out.println("Ojalá ganes el parcial pai ;)");
                         break;

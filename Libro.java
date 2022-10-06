@@ -91,10 +91,10 @@ public class Libro{
      */
     @Override
     public String toString() {
-        return "Nombre: " + getNombre() + "\n" +
-            "Tema: " + getTema() + "\n" +
-            "Paginas: " + getPaginas() + "\n" +
-            "Idioma: " + getIdioma() + "\n";
+        return "\n - Nombre: " + getNombre() + "\n" +
+            " - Tema: " + getTema() + "\n" +
+            " - Paginas: " + getPaginas() + "\n" +
+            " - Idioma: " + getIdioma() + "\n";
     }
 
 

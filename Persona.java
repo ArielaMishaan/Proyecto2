@@ -77,11 +77,23 @@ public class Persona{
         this.contrasenia = contrasenia;
     }
 
-    public void agregarLibro(){
-
+    public String mostrarLibros(){
+        String resultado = "";
+        int contador = 1;
+        resultado = resultado + "\nLIBROS LEÍDOS: \n";
+        
+        for (Libro libro : listaLibros) {
+            resultado = resultado + "\nLibro " + contador + " :";
+            resultado = resultado + libro.toString();
+            contador ++;
+        }
+        return resultado;
     }
 
-    
+    public void agregarLibro(String nombre, String tema, int paginas, String idioma){
+        Libro actual = new Libro(nombre, tema, paginas, idioma);
+        listaLibros.add(actual);
+    }
 
     public void agregarNuevaListaFlashcards(String tema){
         ArrayList<Flashcard> lista = new  ArrayList<Flashcard>();
@@ -113,7 +125,7 @@ public class Persona{
     public String toString() {
         return "" +
             "Nombre: " + getNombre() + "\n" +
-            "Lista de Libros='" + getListaLibros() + "\n" +
+            "Lista de Libros: " + getListaLibros() + "\n" +
             "Listas de Flashcards: " + getListaListaFlashcards().toString() + "\n" +
             "Metas: " + getMetas() + "\n" +
             "Carnet: " + getCarnet() + "\n";
