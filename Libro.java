@@ -23,6 +23,7 @@ public class Libro{
 
     
     /** 
+     * metodo para obtener el nombre
      * @return String
      */
     public String getNombre() {
@@ -31,6 +32,7 @@ public class Libro{
 
     
     /** 
+     * metodo para modificar el nombre
      * @param nombre
      */
     public void setNombre(String nombre) {
@@ -39,6 +41,7 @@ public class Libro{
 
     
     /** 
+     * metodo para obtener el tema
      * @return String
      */
     public String getTema() {
@@ -47,6 +50,7 @@ public class Libro{
 
     
     /** 
+     * metodo para modificar el tema
      * @param tema
      */
     public void setTema(String tema) {
@@ -55,6 +59,7 @@ public class Libro{
 
     
     /** 
+     * metodo para obtener paginas
      * @return int
      */
     public int getPaginas() {
@@ -63,6 +68,7 @@ public class Libro{
 
     
     /** 
+     * metodo para modificar paginas
      * @param paginas
      */
     public void setPaginas(int paginas) {
@@ -71,6 +77,7 @@ public class Libro{
 
     
     /** 
+     * metodo para obtener el idioma
      * @return String
      */
     public String getIdioma() {
@@ -79,6 +86,7 @@ public class Libro{
 
     
     /** 
+     * metodo para modificar el idioma
      * @param idioma
      */
     public void setIdioma(String idioma) {
@@ -87,6 +95,7 @@ public class Libro{
 
     
     /** 
+     * metodo para transformar todo en String
      * @return String
      */
     @Override
