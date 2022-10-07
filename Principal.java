@@ -58,13 +58,22 @@ public class Principal{
                     }
                     case 5:{ //Mostrar lista
                         
-                        System.out.print(persona.desplegarListas());
-                        System.out.println("\n¿Qué lista desea visualizar (número)?");
-                        int num = teclado.nextInt();
-                        teclado.nextLine();
-                        
-                        System.out.println(persona.desplegarListaEspecifica(num));
+                        if(persona.getListaListaFlashcards().size() != 0){
+                            System.out.print(persona.desplegarListas());
+    
+                            System.out.println("\n¿Qué lista desea visualizar (número)?");
+                            int num = teclado.nextInt();
+                            teclado.nextLine();
+                            
+                            System.out.println(persona.desplegarListaEspecifica(num));
+                        }
+
+                        else{
+                            System.out.println("No hay listas para mostrar.");
+                        }
+
                         break;
+
                     }
                     case 6:{ //Sección de libros
                         

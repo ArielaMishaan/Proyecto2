@@ -81,8 +81,7 @@ public class Flashcard {
      */
     @Override
     public String toString() {
-        return "Lado1: " + getLado1() + "\n" +
-            "Lado2: " + getLado2() + "\n";
+        return "Lado1: " + getLado1() + "\nLado2: " + getLado2() + "\n";
     }
     
 }

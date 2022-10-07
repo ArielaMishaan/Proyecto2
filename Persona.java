@@ -200,10 +200,12 @@ public class Persona{
     public String desplegarListas(){
         String resultado = "";
         int i = 1;
+
         for (ListaFlashcards lista : listaListaFlashcards) {
             resultado = resultado + "\n" + i + ". " + lista.getTema();
             i++;
         }
+
         return resultado;
     }
 
