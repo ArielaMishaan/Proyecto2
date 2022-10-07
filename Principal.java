@@ -1,6 +1,15 @@
+/**
+ * clase Main
+ * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan
+ * @date 07-10-2022
+ */
 import java.util.Scanner;
 
 public class Principal{
+    
+    /** 
+     * @param args
+     */
     public static void main (String[] args){
         Scanner teclado = new Scanner (System.in);
         Persona persona = new Persona();
