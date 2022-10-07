@@ -21,6 +21,7 @@ public class ListaFlashcards{
 
     
     /** 
+     * metodo para obtener el tema 
      * @return String
      */
     public String getTema() {
@@ -29,6 +30,7 @@ public class ListaFlashcards{
 
     
     /** 
+     * metodo para cambiar el tema
      * @param tema
      */
     public void setTema(String tema) {
@@ -37,6 +39,7 @@ public class ListaFlashcards{
 
     
     /** 
+     * metodo para obtener la lista
      * @return ArrayList<Flashcard>
      */
     public ArrayList<Flashcard> getListaFlashcards() {
@@ -45,6 +48,7 @@ public class ListaFlashcards{
 
     
     /** 
+     * metodo para cambiar la lista
      * @param listaFlashcards
      */
     public void setListaFlashcards(ArrayList<Flashcard> listaFlashcards) {
@@ -53,6 +57,7 @@ public class ListaFlashcards{
 
     
     /** 
+     * metodo para agregar la flashcard
      * @param lado1
      * @param lado2
      */
@@ -63,6 +68,7 @@ public class ListaFlashcards{
 
     
     /** 
+     * metodo para transformar todo en String
      * @return String
      */
     @Override

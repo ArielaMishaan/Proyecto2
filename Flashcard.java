@@ -22,6 +22,7 @@ public class Flashcard {
 
     
     /** 
+     * metodo para obtener el lado
      * @return String
      */
     public String getLado1() {
@@ -30,6 +31,7 @@ public class Flashcard {
 
     
     /** 
+     * metodo para cambiar el lado
      * @param lado1
      */
     public void setLado1(String lado1) {
@@ -38,6 +40,7 @@ public class Flashcard {
 
     
     /** 
+     * metodo para obtener el lado 
      * @return String
      */
     public String getLado2() {
@@ -46,6 +49,7 @@ public class Flashcard {
 
     
     /** 
+     * metodo para cambiar el lado
      * @param lado2
      */
     public void setLado2(String lado2) {
@@ -54,6 +58,7 @@ public class Flashcard {
 
     
     /** 
+     * metodo para mostrar el lado 2 de la flashcard
      * @return String
      */
     public String darVuelta2(){
@@ -62,6 +67,7 @@ public class Flashcard {
 
     
     /** 
+     * metodo para mostrar el lado 1 de la flashcard
      * @return String
      */
     public String darVuelta1(){
@@ -70,6 +76,7 @@ public class Flashcard {
 
     
     /** 
+     * metodo para pasar todo a String
      * @return String
      */
     @Override

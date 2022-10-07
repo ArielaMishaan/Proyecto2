@@ -6,7 +6,6 @@
 import java.util.ArrayList;
 public class Persona{
      /*
-     ogomrg
       */
     private String nombre;
     private ArrayList<Libro> listaLibros;
@@ -37,6 +36,7 @@ public class Persona{
 
     
     /** 
+     * metodo para obtener el nombre
      * @return String
      */
     public String getNombre() {
@@ -45,6 +45,7 @@ public class Persona{
 
     
     /** 
+     * metodo para cambiar el nombre
      * @param nombre
      */
     public void setNombre(String nombre) {
@@ -53,6 +54,7 @@ public class Persona{
 
     
     /** 
+     * metodo para obtener la lista
      * @return ArrayList<Libro>
      */
     public ArrayList<Libro> getListaLibros() {
@@ -61,6 +63,7 @@ public class Persona{
 
     
     /** 
+     * metodo para cambiar la lista
      * @param listaLibros
      */
     public void setListaLibros(ArrayList<Libro> listaLibros) {
@@ -69,6 +72,7 @@ public class Persona{
 
     
     /** 
+     * metodo para obtener la lista
      * @return ArrayList<ListaFlashcards>
      */
     public ArrayList<ListaFlashcards> getListaListaFlashcards() {
@@ -77,6 +81,7 @@ public class Persona{
 
     
     /** 
+     * metodo para cambiar la lista
      * @param listaListaFlashcards
      */
     public void setListaListaFlashcards(ArrayList<ListaFlashcards> listaListaFlashcards) {
@@ -85,6 +90,7 @@ public class Persona{
 
     
     /** 
+     * metodo para obtener las metas
      * @return String
      */
     public String getMetas() {
@@ -93,6 +99,7 @@ public class Persona{
 
     
     /** 
+     * metodo para cambiar las metas
      * @param metas
      */
     public void setMetas(String metas) {
@@ -101,6 +108,7 @@ public class Persona{
 
     
     /** 
+     * metodo para obtener el carnet
      * @return String
      */
     public String getCarnet() {
@@ -109,6 +117,7 @@ public class Persona{
 
     
     /** 
+     * metodo para cambiar el carnet
      * @param carnet
      */
     public void setCarnet(String carnet) {
@@ -117,6 +126,7 @@ public class Persona{
 
     
     /** 
+     * metodo para obtener la contraseña
      * @return String
      */
     public String getContrasenia() {
@@ -125,6 +135,7 @@ public class Persona{
 
     
     /** 
+     * metodo para cambiar la constraseña
      * @param contrasenia
      */
     public void setContrasenia(String contrasenia) {
@@ -133,6 +144,7 @@ public class Persona{
 
     
     /** 
+     * metodo para pasar todo a string
      * @return String
      */
     public String mostrarLibros(){
