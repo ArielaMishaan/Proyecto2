@@ -1,4 +1,6 @@
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Conexion {
     
@@ -18,9 +20,43 @@ public class Conexion {
 		this.contrasenia = contrasenia;
 	}
 
+	public Conexion(){
+		url = "jdbc:mysql://localhost:3306/";
+		db = "proyectoPOO";
+		usuario = "root";
+		contrasenia = "";
+	}
+
+	public void conectar() throws SQLException{
+		String connString = "";
+		connString = url + db;
+
+		conn = DriverManager.getConnection(connString, usuario, contrasenia);
+	}
+
 
 	public Connection getConn() {
-		return conn;
+		try{
+			//Si la conexión no existe o está cerrada
+			if(conn == null || conn.isClosed()){
+				conectar();
+			}
+			return conn;
+
+		}catch(SQLException e ){
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public void cerrar(){
+		try{
+			if(!conn.isClosed()){
+				conn.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
 	}
 
 

@@ -1,11 +1,22 @@
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.chrono.JapaneseChronology;
+
 /**
  * clase que crea flashcards
  * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan
  * @date 07-10-2022
  */
 public class Flashcard {
+    
+    //Atributos
     private String lado1;
     private String lado2;
+
+    //Atributos que interactúan con la base de datos
+    protected Conexion conn;
+
 
 
     public Flashcard() {
