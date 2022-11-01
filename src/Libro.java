@@ -16,7 +16,7 @@ public class Libro{
     private String nombrePropietario;
 
     //Atributos que interactúan con la base de datos
-    protected Conexion conn;
+    private Conexion conn;
 
     //Insertar un libro
     private final String INS_LIBRO = "INSERT INTO Libro (nombre,tema,paginas,idioma,nombrePropietario) VALUES (?,?,?,?,?)";

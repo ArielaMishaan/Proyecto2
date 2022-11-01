@@ -18,7 +18,7 @@ public class Flashcard {
     private String lado2;
 
     //Atributos que interactúan con la base de datos
-    protected Conexion conn;
+    private Conexion conn;
 
     //Insertar una flashcard
     private final String INS_FLASH = "INSERT INTO flashcard (nombrePropietario,nombreLista,lado1,lado2) VALUES (?,?,?,?)";

@@ -14,7 +14,7 @@ public class ListaFlashcards{
     private String nombrePropietario;
 
     //Atributos que interactúan con la base de datos
-    protected Conexion conn;
+    private Conexion conn;
 
     //Seleccionar todas las flashcards de uan persona
     private final String SEL_FLASH_PROPIETARIO = "SELECT * FROM flashcard WHERE nombrePropietario = ? AND nombreLista = ?";

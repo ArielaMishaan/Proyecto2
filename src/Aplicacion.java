@@ -15,7 +15,7 @@ public class Aplicacion{
     private ArrayList<Persona> usuarios;
 
     //Atributos que interactúan con la base de datos
-    protected Conexion conn;
+    private Conexion conn;
     //Seleccionar todas las personas
 	private final String SEL_PERS = "SELECT * FROM persona";
 
@@ -72,7 +72,7 @@ public class Aplicacion{
     }
 
     //Métodos
-    
+
     
     
     

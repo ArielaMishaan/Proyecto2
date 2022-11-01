@@ -20,7 +20,7 @@ public class Persona{
     private String contrasenia;
 
     //Atributos que interactúan con la base de datos
-    protected Conexion conn;
+    private Conexion conn;
 
     //Insertar una persona
     private final String INS_PERS = "INSERT INTO persona (nombre,metas,carnet,contrasenia) VALUES (?,?,?,?)";
