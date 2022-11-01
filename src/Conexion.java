@@ -1,3 +1,8 @@
+/**
+ * clase que recolecta los datos
+ * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan
+ * @date 07-10-2022
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -27,6 +32,10 @@ public class Conexion {
 		contrasenia = "";
 	}
 
+	
+	/** 
+	 * @throws SQLException
+	 */
 	public void conectar() throws SQLException{
 		String connString = "";
 		connString = url + db;
@@ -35,6 +44,10 @@ public class Conexion {
 	}
 
 
+	
+	/** 
+	 * @return Connection
+	 */
 	public Connection getConn() {
 		try{
 			//Si la conexión no existe o está cerrada
@@ -60,46 +73,82 @@ public class Conexion {
 	}
 
 
+	
+	/** 
+	 * @param conn
+	 */
 	public void setConn(Connection conn) {
 		this.conn = conn;
 	}
 
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getDb() {
 		return db;
 	}
 
 
+	
+	/** 
+	 * @param db
+	 */
 	public void setDb(String db) {
 		this.db = db;
 	}
 
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getUrl() {
 		return url;
 	}
 
 
+	
+	/** 
+	 * @param url
+	 */
 	public void setUrl(String url) {
 		this.url = url;
 	}
 
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getUsuario() {
 		return usuario;
 	}
 
 
+	
+	/** 
+	 * @param usuario
+	 */
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getContrasenia() {
 		return contrasenia;
 	}
 
 
+	
+	/** 
+	 * @param contrasenia
+	 */
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
