@@ -123,7 +123,7 @@ public class Persona{
         }
     }
 
-    public void eliminarTrabajador(){
+    public void eliminarPersona(){
         try {
 			//Se obtiene la conexion
 			java.sql.Connection conexion = conn.getConn(); 
