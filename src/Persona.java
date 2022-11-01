@@ -28,10 +28,14 @@ public class Persona{
     private final String UPD_PERS = "UPDATE persona SET nombre = ?, metas = ?, carnet = ?, contrasenia = ? WHERE carnet = ?";
     //Eliminar una persona
     private final String DEL_PERS = "DELETE from persona WHERE nombre = ?";
-	//Seleccionar todos los trabajadores
+	//Seleccionar todas las personas
 	private final String SEL_PERS = "SELECT * FROM persona";
-	//Seleccionar un trabajador dado su id
+	//Seleccionar una persona dado su nombre
 	private final String SEL_PERS_CARNET = "SELECT * FROM persona WHERE nombre = ?";
+    //Seleccionar listas de flashcards dado su propietario
+    private final String SEL_LISTAS_PROPIETARIO = "SELECT * FROM listaFlashcards WHERE nombrePropietario = ?";
+    //Seleccionar libros dado su propietario
+    private final String SEL_LIBROS_PROPIETARIO = "SELECT * FROM Libro WHERE nombrePropietario = ?";
 	
     //Constructores
 
@@ -63,9 +67,12 @@ public class Persona{
         this.carnet = carnet;
         this.contrasenia = contrasenia;
         conn = new Conexion();
+        listaLibros = new ArrayList<Libro>();
+        listaListaFlashcards = new ArrayList<ListaFlashcards>();
     }
 
-    //Métodos
+    //Métodos base de datos
+
     public String insertarPers(){
         try {
             //Se obtiene la conexión
@@ -163,14 +170,13 @@ public class Persona{
 			int i = 0;
 			while (rs.next()){
 				//Se extrae la informaci�n del resultset
-				int id = rs.getInt("id");
 				String nombre = rs.getString("nombre");
-				String area = rs.getString("area");
-				double salarioB = rs.getDouble("salarioBase");
-				int horasAus = rs.getInt("horasAusencia");
+				String metas = rs.getString("metas");
+				String carnet = rs.getString("carnet");
+				String contrasenia = rs.getString("constrasenia");
 				
 				//Se crea el trabajador que se guardar� en el arreglo
-				Persona personaTemporal = new Persona(nombre, area, nombre, area);
+				Persona personaTemporal = new Persona(nombre, metas, carnet, contrasenia);
 				//Se agrega en la posición i
 				personas[i] = personaTemporal;
 				i++;
@@ -213,6 +219,120 @@ public class Persona{
 			return null;
 		}
     }
+
+    public ArrayList<Persona> seleccionarPersonas2(){
+        try {
+            //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
+            java.sql.PreparedStatement ps = null;
+            ps = ((Connection) conn).prepareStatement(SEL_PERS);
+            ResultSet rs = ps.executeQuery();
+    
+            //Crear el arreglo de personas con las personas de la base de datos
+            ArrayList<Persona> usuarios = new ArrayList<Persona>();
+    
+            //Se el rerecorresultSet y se guarda la información en un arreglo.
+            int i = 0;
+            while(rs.next()){
+                //Se extrae la información del resultset
+                String nombre = rs.getString("nombre");
+                String carnet = rs.getString("carnet");
+                String metas = rs.getString("metas");
+                String contrasenia = rs.getString("contrasenia");
+    
+                //Se crea la persona que se guarda en el arreglo
+                Persona personaTemporal = new Persona(nombre, metas, carnet, contrasenia);
+                //Se agrega en la posición i
+                usuarios.add(personaTemporal);
+                i++;
+            }
+            return usuarios;
+            
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<ListaFlashcards> seleccionarListas_Propietairo(String propietario){
+        try {
+            //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
+            java.sql.PreparedStatement ps = null;
+            ps = ((Connection) conn).prepareStatement(SEL_LISTAS_PROPIETARIO);
+            ps.setString(2, propietario);
+            ResultSet rs = ps.executeQuery();
+    
+            //Crear el arreglo de personas con las personas de la base de datos
+            ArrayList<ListaFlashcards> listaFlashcards = new ArrayList<ListaFlashcards>();
+    
+            //Se el rerecorresultSet y se guarda la información en un arreglo.
+            int i = 0;
+            while(rs.next()){
+                //Se extrae la información del resultset
+                String tema = rs.getString("tema");
+                String nombrePropietario = rs.getString("nombrePropietario");
+    
+                //Se crea la persona que se guarda en el arreglo
+                ListaFlashcards listaTemporal = new ListaFlashcards(tema, nombrePropietario);
+                //Se agrega en la posición i
+                listaFlashcards.add(listaTemporal);
+                i++;
+            }
+            return listaFlashcards;
+            
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<Libro> seleccionarLibros2(String propietario){
+        try {
+            //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
+            java.sql.PreparedStatement ps = null;
+            ps = ((Connection) conn).prepareStatement(SEL_LIBROS_PROPIETARIO);
+            ps.setString(5, propietario);
+            ResultSet rs = ps.executeQuery();
+    
+            //Crear el arreglo de personas con las personas de la base de datos
+            ArrayList<Libro> listaLibros = new ArrayList<Libro>();
+    
+            //Se el rerecorresultSet y se guarda la información en un arreglo.
+            int i = 0;
+            while(rs.next()){
+                //Se extrae la información del resultset
+                String nombre = rs.getString("nombre");
+                String tema = rs.getString("tema");
+                int paginas = rs.getInt("paginas");
+                String idioma = rs.getString("idioma");
+                String nombrePropietario = rs.getString("nombrePropietario");
+    
+                //Se crea la persona que se guarda en el arreglo
+                Libro libroTemporal = new Libro(nombre, tema, paginas, idioma, nombrePropietario);
+                //Se agrega en la posición i
+                listaLibros.add(libroTemporal);
+                i++;
+            }
+            return listaLibros;
+            
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void llenarListas(){
+        this.listaLibros = seleccionarLibros2(this.nombre);
+        this.listaListaFlashcards = seleccionarListas_Propietairo(this.nombre);
+
+        for (ListaFlashcards listaFlashcards : listaListaFlashcards) {
+            listaFlashcards.llenarListaBaseDeDatos();
+        }
+    }
+
+    //otros métodos 
 
     /** 
      * metodo para obtener el nombre
@@ -346,8 +466,8 @@ public class Persona{
      * @param paginas
      * @param idioma
      */
-    public void agregarLibro(String nombre, String tema, int paginas, String idioma){
-        Libro actual = new Libro(nombre, tema, paginas, idioma);
+    public void agregarLibro(String nombre, String tema, int paginas, String idioma, String nombrePropietario){
+        Libro actual = new Libro(nombre, tema, paginas, idioma, nombrePropietario);
         listaLibros.add(actual);
     }
 
@@ -357,7 +477,7 @@ public class Persona{
      */
     public void agregarNuevaListaFlashcards(String tema){
         ArrayList<Flashcard> lista = new  ArrayList<Flashcard>();
-        ListaFlashcards listaNueva = new ListaFlashcards(tema, lista);
+        ListaFlashcards listaNueva = new ListaFlashcards(tema, lista, this.nombre);
         listaListaFlashcards.add(listaNueva);
     }
 

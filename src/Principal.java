@@ -109,7 +109,7 @@ public class Principal{
                                     System.out.println("Ingrese el idioma del libro que terminó de leer: ");  
                                     idioma = teclado.nextLine();                                 
                                     
-                                    persona.agregarLibro(nombre, tema, paginas, idioma);
+                                    persona.agregarLibro(nombre, tema, paginas, idioma, persona.getNombre());
                                     
                                     break;
                                 
