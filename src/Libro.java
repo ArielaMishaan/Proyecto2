@@ -111,7 +111,7 @@ public class Libro{
         }
     }
 
-    public void eliminarPersona(){
+    public void eliminarLibro(){
         try {
 			//Se obtiene la conexion
 			java.sql.Connection conexion = conn.getConn(); 
