@@ -18,6 +18,7 @@ public class Persona{
     private String metas;
     private String carnet;
     private String contrasenia;
+    private int listasEstudiadas;
 
     //Atributos que interactúan con la base de datos
     private Conexion conn;
@@ -46,26 +47,29 @@ public class Persona{
         metas = "";
         carnet = "";
         contrasenia = "";
+        listasEstudiadas = 0;
         
         //crear la conexión para la base de datos
         conn = new Conexion();
     }
 
-    public Persona(String nombre, ArrayList<Libro> listaLibros, ArrayList<ListaFlashcards> listaListaFlashcards, String metas, String carnet, String contrasenia) {
+    public Persona(String nombre, ArrayList<Libro> listaLibros, ArrayList<ListaFlashcards> listaListaFlashcards, String metas, String carnet, String contrasenia, int listasEstudiadas) {
         this.nombre = nombre;
         this.listaLibros = listaLibros;
         this.listaListaFlashcards = listaListaFlashcards;
         this.metas = metas;
         this.carnet = carnet;
         this.contrasenia = contrasenia;
+        this.listasEstudiadas = listasEstudiadas;
         conn = new Conexion();
     }
 
-    public Persona(String nombre, String metas, String carnet, String contrasenia) {
+    public Persona(String nombre, String metas, String carnet, String contrasenia, int listasEstudiadas) {
         this.nombre = nombre;
         this.metas = metas;
         this.carnet = carnet;
         this.contrasenia = contrasenia;
+        this.listasEstudiadas = listasEstudiadas;
         conn = new Conexion();
         listaLibros = new ArrayList<Libro>();
         listaListaFlashcards = new ArrayList<ListaFlashcards>();
@@ -441,6 +445,23 @@ public class Persona{
         this.contrasenia = contrasenia;
     }
 
+    /** 
+     * metodo para obtener la cantidad de listas estudiadas
+     * @return int
+     */
+    public int getListasEstudiadas() {
+        return this.listasEstudiadas;
+    }
+
+    
+    /** 
+     * metodo para cambiar la cantidad de listas estudiadas
+     * @param listasEstudiadas
+     */
+    public void setListasEstudiadas(int listasEstudiadas) {
+        this.listasEstudiadas = listasEstudiadas;
+    }
+
     
     /** 
      * metodo para pasar todo a string
@@ -516,6 +537,16 @@ public class Persona{
     public String desplegarListaEspecifica(int num){
         ListaFlashcards actual = listaListaFlashcards.get(num-1);
         return actual.toString();
+    }
+    
+    public ArrayList<ArrayList<String>> retornarLados(int num){
+        ListaFlashcards actual = listaListaFlashcards.get(num-1);
+        return actual.retornarLados();
+    }
+
+    public String metas(){
+        this.metas = "METAS:\nLibros leídos" + listaLibros.size() + "\nListas estudiadas: " + listasEstudiadas;
+        return metas;
     }
 
     
