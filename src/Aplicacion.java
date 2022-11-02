@@ -73,7 +73,37 @@ public class Aplicacion{
 
     //Métodos
 
+    public int confirmar(String usuario, String contrasena){
+        int index = -1;
+        int i =0;
+        for(Persona person : usuarios){
+            if(person.getNombre().equalsIgnoreCase(usuario) && person.getContrasenia().equalsIgnoreCase(contrasena)){
+                index = i;
+            }
+            i++;
+        }
+        return index;
+    }
+
+    public void crear(String nombre, String contrasenia, String carnet){
+        Persona nuevousu = new Persona(nombre, "", carnet, contrasenia);
+        usuarios.add(nuevousu);
+    }
+
+    public void agregarlibro(int index, String nombre, String tema, int paginas, String idioma){
+        Persona usuariotem = usuarios.get(index);
+        String nombrePropietario = usuariotem.getNombre();
+        usuariotem.agregarLibro(nombre, tema, paginas, idioma, nombrePropietario);
+    }
+
+    public void agregarNuevaListaFlashcards(int index, String tema){
+        Persona usuariotem = usuarios.get(index);
+        usuariotem.agregarNuevaListaFlashcards(tema);
+    }
     
+
+
+
     
     
 }
