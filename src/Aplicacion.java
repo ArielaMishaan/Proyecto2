@@ -146,6 +146,14 @@ public class Aplicacion{
         Persona usuariotem = usuarios.get(index);
         return usuariotem.desplegarListaEspecifica(numLista);
     }
+
+    public int cantidadFlashcards(int index, int numLista){
+        Persona usuariotem = usuarios.get(index);
+        ArrayList<ArrayList<String>> lista = usuariotem.retornarLados(numLista);
+        
+        return lista.size();
+        
+    }
     
     public String mostrarLado1(int index, int numLista, int flashcard){
         Persona usuariotem = usuarios.get(index);
@@ -160,7 +168,7 @@ public class Aplicacion{
         Persona usuariotem = usuarios.get(index);
         ArrayList<ArrayList<String>> lista = usuariotem.retornarLados(numLista);
 
-        if (lista.get(flashcard).get(1).equalsIgnoreCase(lado2)){
+        if (lista.get(flashcard-1).get(1).equalsIgnoreCase(lado2)){
             resultado = true;
         }
         

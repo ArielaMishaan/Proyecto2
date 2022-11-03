@@ -4,6 +4,7 @@
  * @date 07-10-2022
  */
 import java.util.Scanner;
+import java.util.Random;
 
 public class Principal{
     
@@ -14,6 +15,7 @@ public class Principal{
     public static void main (String[] args){
         Scanner teclado = new Scanner (System.in);
         Aplicacion app = new Aplicacion();
+        Random rand = new Random();
         int opcion = 0;
         boolean continuar = true;
         
@@ -52,7 +54,7 @@ public class Principal{
                         boolean salir2 = true;
                         int opcion2 = 0;
                         String menuDos = "\n1. Crear Lista \n2. Estudiar Lista. \n3. Mostrar lista de estudios. \n4. Sección libros. \n5. Metas.\n6. Salir.";
-                        System.out.println("\n=====BIENVENIDO=====\n");
+                        System.out.println("\n=====BIENVENIDO=====");
                         System.out.println("Ingrese su nombre de usuario: ");
                         String usuario = teclado.nextLine();
                         System.out.println("Ingrese su contraseña: ");
@@ -87,9 +89,34 @@ public class Principal{
                                     }
                                     
                                     case 2: {
+                                        int contador = 0;
+                                        int correctas = 0;
                                         System.out.println(app.desplegarListas(index));
                                         System.out.println("Elija la lista que desea estudiar: (Ingrese el número)");
-    
+                                        int n = teclado.nextInt();
+                                        teclado.nextLine();
+                                        int cantidad = app.cantidadFlashcards(index, n);
+                                        while (contador < cantidad){
+                                            int flashcard = rand.nextInt(cantidad);
+                                            String lado1 = app.mostrarLado1(index, n, flashcard);
+                                            System.out.println("Flashcard " + (contador + 1) + ": " + lado1 + "\nIngrese la respuesta: ");
+                                            String respuesta = teclado.nextLine();
+                                            
+                                            if (app.verificarLado2(index, n, flashcard, respuesta)){
+                                                System.out.println("¡Correcto! Tu respuesta es correcta.");
+                                                correctas++;
+                                            }
+                                            else{
+                                                System.out.println("¡Oops! Tu respuesta es incorrecta.");
+                                            }
+                                        }
+                                        if (correctas == cantidad){
+                                            app.agregarListaEstudiada(index);
+                                            System.out.println("¡Felicidades! Has terminado de estudiar esta lista.");
+                                        }
+                                        else{
+                                            System.out.println("No has estudiado esta lista por completo. Sigue intentándolo para completar el estudio.");
+                                        }
                                         break;
                                     }
     
@@ -103,7 +130,7 @@ public class Principal{
                                             System.out.println(listas);
                                             System.out.println("\nIngrese el numero de la lista a observar: ");
                                             int numLista = teclado.nextInt();
-                                            System.out.println(app.desplegarListaEsp(index, numLista-1));
+                                            System.out.println(app.desplegarListaEsp(index, numLista));
                                         }
                                         break;
                                     }
@@ -179,19 +206,20 @@ public class Principal{
                             }
                         }
                         else{
-                            System.out.println("El nombre de usuario/contraseña ingresadas no son correctas. Verifique su entrada");
+                            System.out.println("\nEl nombre de usuario/contraseña ingresadas no son correctas. Verifique su entrada.");
                         }
+                        break;
                     }
                     
-                        case 3: {
-                            continuar = false;
-                        }
+                    case 3: {
+                        continuar = false;
+                        break;
+                    }
                         
-
-                default:{
-                    System.out.println("Las opciones permitidas son entre 1 a 8.");
-                    break;
-                }
+                    default:{
+                        System.out.println("Las opciones permitidas son entre 1 a 8.");
+                        break;
+                    }
 
                 }
             }catch (Exception e){
