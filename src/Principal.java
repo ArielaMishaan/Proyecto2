@@ -41,7 +41,7 @@ public class Principal{
                             System.out.println("Ingrese la contraseña a utilizar: ");
                             String contrasenia = teclado.nextLine();
                             if(app.crear(nombre, contrasenia, carnet)){
-                                System.out.println("El usuario ha sido creado exitosamente.");
+                                System.out.println("\nEl usuario ha sido creado exitosamente.");
                                 entradaInco = false;
                             }
                             else if(app.crear(nombre, contrasenia, carnet) == false){
@@ -121,7 +121,7 @@ public class Principal{
                                     }
     
                                     case 3: {
-                                        System.out.println("\n===== LISTAS GUARDADAS =====\n");
+                                        System.out.println("\n===== LISTAS GUARDADAS =====");
                                         String listas = app.desplegarListas(index);
                                         if(listas.equalsIgnoreCase("")){
                                             System.out.println("Usted no tiene listas guardadas");
@@ -207,6 +207,7 @@ public class Principal{
                         }
                         else{
                             System.out.println("\nEl nombre de usuario/contraseña ingresadas no son correctas. Verifique su entrada.");
+                            break;
                         }
                         break;
                     }
