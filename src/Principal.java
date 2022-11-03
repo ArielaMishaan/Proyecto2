@@ -19,7 +19,7 @@ public class Principal{
         int opcion = 0;
         boolean continuar = true;
         
-        String menu = "\nLERNEN\n1. Crear Usuario. \n2. Iniciar sesión  \n3. Salir. ";
+        String menu = "\n===== LERNEN =====\n1. Crear Usuario. \n2. Iniciar sesión  \n3. Salir. ";
         
         while (continuar){
             try{
@@ -53,7 +53,7 @@ public class Principal{
                     case 2:{ //Iniciar sesión
                         boolean salir2 = true;
                         int opcion2 = 0;
-                        String menuDos = "\n1. Crear Lista \n2. Estudiar Lista. \n3. Mostrar lista de estudios. \n4. Sección libros. \n5. Metas.\n6. Salir.";
+                        String menuDos = "\n===== LERNEN =====\n1. Crear Lista \n2. Estudiar Lista. \n3. Mostrar lista de estudios. \n4. Sección libros. \n5. Metas.\n6. Salir.";
                         System.out.println("\n=====BIENVENIDO=====");
                         System.out.println("Ingrese su nombre de usuario: ");
                         String usuario = teclado.nextLine();
@@ -103,12 +103,13 @@ public class Principal{
                                             String respuesta = teclado.nextLine();
                                             
                                             if (app.verificarLado2(index, n, flashcard, respuesta)){
-                                                System.out.println("¡Correcto! Tu respuesta es correcta.");
+                                                System.out.println("¡Correcto! Tu respuesta es correcta.\n");
                                                 correctas++;
                                             }
                                             else{
-                                                System.out.println("¡Oops! Tu respuesta es incorrecta.");
+                                                System.out.println("¡Oops! Tu respuesta es incorrecta.\n");
                                             }
+                                            contador++;
                                         }
                                         if (correctas == cantidad){
                                             app.agregarListaEstudiada(index);
@@ -187,6 +188,7 @@ public class Principal{
 
                                                 case 3: {
                                                     selibro = false;
+                                                    break;
                                                 }
                                             }
                                         }

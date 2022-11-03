@@ -168,7 +168,7 @@ public class Aplicacion{
         Persona usuariotem = usuarios.get(index);
         ArrayList<ArrayList<String>> lista = usuariotem.retornarLados(numLista);
 
-        if (lista.get(flashcard-1).get(1).equalsIgnoreCase(lado2)){
+        if (lista.get(flashcard).get(1).equalsIgnoreCase(lado2)){
             resultado = true;
         }
         
