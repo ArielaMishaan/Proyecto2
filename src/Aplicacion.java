@@ -48,9 +48,10 @@ public class Aplicacion{
                 String carnet = rs.getString("carnet");
                 String metas = rs.getString("metas");
                 String contrasenia = rs.getString("contrasenia");
+                int listasEstudiadas = rs.getInt("listasEstudiadas");
     
                 //Se crea la persona que se guarda en el arreglo
-                Persona personaTemporal = new Persona(nombre, metas, carnet, contrasenia, 0);
+                Persona personaTemporal = new Persona(nombre, metas, carnet, contrasenia, listasEstudiadas);
                 //Se agrega en la posición i
                 usuarios.add(personaTemporal);
                 i++;
@@ -93,7 +94,14 @@ public class Aplicacion{
     public void agregarlibro(int index, String nombre, String tema, int paginas, String idioma){
         Persona usuariotem = usuarios.get(index);
         String nombrePropietario = usuariotem.getNombre();
-        usuariotem.agregarLibro(nombre, tema, paginas, idioma, nombrePropietario);
+        usuariotem.agregarLibro(nombre, tema, paginas, idioma);
+    }
+
+    public void insertarInfoBaseDeDatos(){
+        for (Persona usuario : usuarios) {
+            usuario.insertarLibrosYListasFlashcards();  
+            usuario.insertarPers(); 
+        }
     }
 
     public void agregarNuevaListaFlashcards(int index, String tema){

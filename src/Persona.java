@@ -24,9 +24,9 @@ public class Persona{
     private Conexion conn;
 
     //Insertar una persona
-    private final String INS_PERS = "INSERT INTO persona (nombre,metas,carnet,contrasenia) VALUES (?,?,?,?)";
+    private final String INS_PERS = "INSERT INTO persona (nombre,metas,carnet,contrasenia,listasEstudiadas) VALUES (?,?,?,?,?)";
     //Modificar una persona
-    private final String UPD_PERS = "UPDATE persona SET nombre = ?, metas = ?, carnet = ?, contrasenia = ? WHERE carnet = ?";
+    private final String UPD_PERS = "UPDATE persona SET nombre = ?, metas = ?, carnet = ?, contrasenia = ?, listasEstudiadas = ? WHERE carnet = ?";
     //Eliminar una persona
     private final String DEL_PERS = "DELETE from persona WHERE nombre = ?";
 	//Seleccionar todas las personas
@@ -89,6 +89,7 @@ public class Persona{
             ps.setString(2, metas);
             ps.setString(3, carnet);
             ps.setString(4, contrasenia);
+            ps.setInt(5, listasEstudiadas);
 
             //Se ejecuta la consulta
             ps.executeUpdate();
@@ -111,6 +112,16 @@ public class Persona{
         }
     }
 
+    public void insertarLibrosYListasFlashcards(){
+        for (Libro libro : listaLibros) {
+            libro.insertarLibro();
+        }
+        for (ListaFlashcards listaFlashcards : listaListaFlashcards) {
+            listaFlashcards.insertarLista();
+            listaFlashcards.insertarFlashcards();
+        }
+    }
+
     public boolean modificarPersona(){
         try{
             //Se obtiene la conexión
@@ -123,6 +134,7 @@ public class Persona{
             ps.setString(2,metas);
             ps.setString(3,carnet);
             ps.setString(4,contrasenia);
+            ps.setInt(5, listasEstudiadas);
 
             //Se ejecuta la consulta
             ps.executeUpdate();
@@ -178,9 +190,10 @@ public class Persona{
 				String metas = rs.getString("metas");
 				String carnet = rs.getString("carnet");
 				String contrasenia = rs.getString("constrasenia");
+                int listasEstudiadas = rs.getInt("listasEstudiadas");
 				
 				//Se crea el trabajador que se guardar� en el arreglo
-				Persona personaTemporal = new Persona(nombre, metas, carnet, contrasenia);
+				Persona personaTemporal = new Persona(nombre, metas, carnet, contrasenia, listasEstudiadas);
 				//Se agrega en la posición i
 				personas[i] = personaTemporal;
 				i++;
@@ -211,9 +224,10 @@ public class Persona{
                 String metas = rs.getString("metas");
 				String carnetPers = rs.getString("carnet");
 				String contrasenia = rs.getString("contraseña");
+                int listasEstudiadas = rs.getInt("listasEstudiadas");
 				
 				//Se crea el trabajador que se devolver�
-				personaTemporal = new Persona(nombre, metas, carnetPers, contrasenia);
+				personaTemporal = new Persona(nombre, metas, carnetPers, contrasenia, listasEstudiadas);
 			}
 			return personaTemporal;
 
@@ -242,9 +256,10 @@ public class Persona{
                 String carnet = rs.getString("carnet");
                 String metas = rs.getString("metas");
                 String contrasenia = rs.getString("contrasenia");
+                int listasEstudiadas = rs.getInt("listasEstudiadas");
     
                 //Se crea la persona que se guarda en el arreglo
-                Persona personaTemporal = new Persona(nombre, metas, carnet, contrasenia);
+                Persona personaTemporal = new Persona(nombre, metas, carnet, contrasenia, listasEstudiadas);
                 //Se agrega en la posición i
                 usuarios.add(personaTemporal);
                 i++;
@@ -487,8 +502,8 @@ public class Persona{
      * @param paginas
      * @param idioma
      */
-    public void agregarLibro(String nombre, String tema, int paginas, String idioma, String nombrePropietario){
-        Libro actual = new Libro(nombre, tema, paginas, idioma, nombrePropietario);
+    public void agregarLibro(String nombre, String tema, int paginas, String idioma){
+        Libro actual = new Libro(nombre, tema, paginas, idioma, this.nombre);
         listaLibros.add(actual);
     }
 

@@ -30,6 +30,8 @@ public class ListaFlashcards{
     private final String SEL_LISTAS_PROPIETARIO = "SELECT * FROM listaFlashcards WHERE nombrePropietario = ?";
     //Seleccionar lista de flashcards por nombre y propietario
     private final String SEL_LISTA_NOMBRE_PROPIETARIO = "SELECT * FROM listaFlashcards WHERE tema = ? AND nombrePropietario = ?";
+    //Insertar una flashcard
+    private final String INS_FLASH = "INSERT INTO flashcard (nombrePropietario,nombreLista,lado1,lado2) VALUES (?,?,?,?)";
 
     //constructores
 
@@ -163,6 +165,12 @@ public class ListaFlashcards{
             // TODO: handle exception
             e.printStackTrace();
             return "No se pudo insertar.";
+        }
+    }
+
+    public void insertarFlashcards(){
+        for (Flashcard flashcard : listaFlashcards) {
+            flashcard.insertarFlashcard();
         }
     }
 
