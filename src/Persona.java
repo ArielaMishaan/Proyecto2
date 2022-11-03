@@ -533,7 +533,7 @@ public class Persona{
      * @return String
      */
     public String desplegarListas(){
-        String resultado = "";
+        String resultado = "LISTAS";
         int i = 1;
 
         for (ListaFlashcards lista : listaListaFlashcards) {

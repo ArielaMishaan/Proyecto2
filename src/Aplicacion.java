@@ -86,9 +86,27 @@ public class Aplicacion{
         return index;
     }
 
-    public void crear(String nombre, String contrasenia, String carnet){
+    public boolean crear(String nombre, String contrasenia, String carnet){
+        boolean creacion = true;
         Persona nuevousu = new Persona(nombre, "", carnet, contrasenia, 0);
-        usuarios.add(nuevousu);
+        if (existente(nombre, carnet)){
+            creacion = false;
+        }
+        else if (existente(nombre, carnet) == false){
+            usuarios.add(nuevousu);
+        }
+        return creacion;
+        
+    }
+
+    public boolean existente(String nombre, String carnet){
+        boolean existe = false;
+        for(Persona per : usuarios){
+            if(per.getNombre().equalsIgnoreCase(nombre) || per.getCarnet().equalsIgnoreCase(carnet)){
+                existe = true;
+            }
+        }
+        return existe;
     }
 
     public void agregarlibro(int index, String nombre, String tema, int paginas, String idioma){
@@ -155,6 +173,27 @@ public class Aplicacion{
         int cantidad = usuariotem.getListasEstudiadas();
         usuariotem.setListasEstudiadas(cantidad + 1);
 
+    }
+
+
+    public ArrayList<Persona> getUsuarios() {
+        return this.usuarios;
+    }
+
+    public void setUsuarios(ArrayList<Persona> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public Conexion getConn() {
+        return this.conn;
+    }
+
+    public void setConn(Conexion conn) {
+        this.conn = conn;
+    }
+
+    public String getSEL_PERS() {
+        return this.SEL_PERS;
     }
 
     
