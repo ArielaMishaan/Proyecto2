@@ -346,6 +346,18 @@ public class ListaFlashcards{
         listaFlashcards.add(nueva);
     }
 
+    public ArrayList<ArrayList<String>> retornarLados(){
+        ArrayList<ArrayList<String>> lista = new ArrayList<ArrayList<String>>();
+
+        for (Flashcard flashcard : listaFlashcards) {
+            ArrayList<String> lados = new ArrayList<String>();
+            lados.add(flashcard.getLado1());
+            lados.add(flashcard.getLado2());
+            lista.add(lados);
+        }
+        return lista;
+    }
+
     
     /** 
      * metodo para transformar todo en String
