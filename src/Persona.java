@@ -559,7 +559,7 @@ public class Persona{
     }
 
     public String metas(){
-        this.metas = "\nLibros leídos" + listaLibros.size() + "\nListas estudiadas: " + listasEstudiadas;
+        this.metas = "\nLibros leídos: " + listaLibros.size() + "\nListas estudiadas: " + listasEstudiadas;
         return metas;
     }
 
