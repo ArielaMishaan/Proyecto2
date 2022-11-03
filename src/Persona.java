@@ -485,7 +485,6 @@ public class Persona{
     public String mostrarLibros(){
         String resultado = "";
         int contador = 1;
-        resultado = resultado + "\nLIBROS LEÍDOS: \n";
         
         for (Libro libro : listaLibros) {
             resultado = resultado + "\nLibro " + contador + " :";
@@ -533,7 +532,7 @@ public class Persona{
      * @return String
      */
     public String desplegarListas(){
-        String resultado = "LISTAS";
+        String resultado = "";
         int i = 1;
 
         for (ListaFlashcards lista : listaListaFlashcards) {
@@ -560,7 +559,7 @@ public class Persona{
     }
 
     public String metas(){
-        this.metas = "METAS:\nLibros leídos" + listaLibros.size() + "\nListas estudiadas: " + listasEstudiadas;
+        this.metas = "\nLibros leídos" + listaLibros.size() + "\nListas estudiadas: " + listasEstudiadas;
         return metas;
     }
 

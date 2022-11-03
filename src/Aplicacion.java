@@ -175,6 +175,11 @@ public class Aplicacion{
 
     }
 
+    public String metas(int index){
+        Persona usuariotem = usuarios.get(index);
+        return usuariotem.metas();
+
+    }
 
     public ArrayList<Persona> getUsuarios() {
         return this.usuarios;
