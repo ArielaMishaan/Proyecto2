@@ -20,8 +20,8 @@ public class Principal{
         int opcion = 0;
         boolean continuar = true;
 
-        app.llenarListasUsuarios();
-        app.insertarInfoBaseDeDatos();
+        //app.llenarListasUsuarios();
+        //app.insertarInfoBaseDeDatos();
         
         String menu = "\n===== LERNEN =====\n1. Crear Usuario. \n2. Iniciar sesión  \n3. Salir. ";
         
@@ -208,6 +208,12 @@ public class Principal{
                                         salir2 = false;
                                         break;
                                     }
+
+                                    default:{
+                                        System.out.println("Las opciones permitidas son entre 1 a 6.");
+                                        break;
+                                    }
+
                                 }
                             }
                         }
@@ -219,13 +225,13 @@ public class Principal{
                     }
                     
                     case 3: { //Salir
-                        app.actualizarDatos();
+                        //app.actualizarDatos();
                         continuar = false;
                         break;
                     }
                         
                     default:{
-                        System.out.println("Las opciones permitidas son entre 1 a 8.");
+                        System.out.println("Las opciones permitidas son entre 1 a 3.");
                         break;
                     }
 
