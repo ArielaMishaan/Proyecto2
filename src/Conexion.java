@@ -48,7 +48,7 @@ public class Conexion {
 	/** 
 	 * @return Connection
 	 */
-	public Connection getConn() {
+	public java.sql.Connection getConn() {
 		try{
 			//Si la conexión no existe o está cerrada
 			if(conn == null || conn.isClosed()){

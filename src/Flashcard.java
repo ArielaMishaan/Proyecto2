@@ -39,6 +39,7 @@ public class Flashcard {
         nombreLista = "";
         lado1 = "";
         lado2 = "";
+        conn = new Conexion();
     }
 
 
@@ -47,6 +48,7 @@ public class Flashcard {
         this.nombreLista = nombreLista;
         this.lado1 = lado1;
         this.lado2 = lado2;
+        conn = new Conexion();
     }
 
     //Métodos para la base de datos
@@ -202,9 +204,11 @@ public class Flashcard {
 
     public ArrayList<Flashcard> seleccionarFlashcards_Propietario_NombreLista(String propietario, String lista){
         try {
+            //Se obtiene la conexión
+            java.sql.Connection conexion = conn.getConn();
             //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
             java.sql.PreparedStatement ps = null;
-            ps = ((Connection) conn).prepareStatement(SEL_FLASH_PROPIETARIO);
+            ps = conexion.prepareStatement(SEL_FLASH_PROPIETARIO);
             ps.setString(5, propietario);
             ps.setString(2, lista);
             ResultSet rs = ps.executeQuery();

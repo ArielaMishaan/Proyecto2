@@ -38,6 +38,7 @@ public class Libro{
         paginas = 0;
         idioma = "";
         nombrePropietario = "";
+        conn = new Conexion();
     }
 
 
@@ -47,6 +48,7 @@ public class Libro{
         this.paginas = paginas;
         this.idioma = idioma;
         this.nombrePropietario = nombrePropietario;
+        conn = new Conexion();
     }
 
 
@@ -207,9 +209,11 @@ public class Libro{
     
     public ArrayList<Libro> seleccionarLibros2(String propietario){
         try {
+            //Se obtiene la conexión
+            java.sql.Connection conexion = conn.getConn();
             //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
             java.sql.PreparedStatement ps = null;
-            ps = ((Connection) conn).prepareStatement(SEL_LIBROS_PROPIETARIO);
+            ps = conexion.prepareStatement(SEL_LIBROS_PROPIETARIO);
             ps.setString(5, propietario);
             ResultSet rs = ps.executeQuery();
     

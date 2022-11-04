@@ -23,18 +23,22 @@ public class Aplicacion{
 
     public Aplicacion() {
         usuarios = new ArrayList<Persona>();
+        conn = new Conexion();
     }
 
     public Aplicacion( ArrayList <Persona> usuarios) {
         this.usuarios = usuarios;
+        conn = new Conexion();
     }
 
     //Base de datos
     public ArrayList<Persona> seleccionarPersonas2(){
         try {
+            //Se obtiene la conexión
+            java.sql.Connection conexion = conn.getConn();
             //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
             java.sql.PreparedStatement ps = null;
-            ps = ((Connection) conn).prepareStatement(SEL_PERS);
+            ps = conexion.prepareStatement(SEL_PERS);
             ResultSet rs = ps.executeQuery();
     
             //Crear el arreglo de personas con las personas de la base de datos
@@ -72,6 +76,19 @@ public class Aplicacion{
         }
     }
 
+    public void insertarInfoBaseDeDatos(){
+        for (Persona usuario : usuarios) {
+            usuario.insertarLibrosYListasFlashcards();  
+            usuario.insertarPers(); 
+        }
+    }
+
+    public void actualizarDatos(){
+        for (Persona usuario : usuarios) {
+            usuario.modificarPersona();
+        }
+    }
+
     //Métodos
 
     public int confirmar(String usuario, String contrasena){
@@ -94,6 +111,7 @@ public class Aplicacion{
         }
         else if (existente(nombre, carnet) == false){
             usuarios.add(nuevousu);
+            nuevousu.insertarPers();
         }
         return creacion;
         
@@ -113,13 +131,6 @@ public class Aplicacion{
         Persona usuariotem = usuarios.get(index);
         String nombrePropietario = usuariotem.getNombre();
         usuariotem.agregarLibro(nombre, tema, paginas, idioma);
-    }
-
-    public void insertarInfoBaseDeDatos(){
-        for (Persona usuario : usuarios) {
-            usuario.insertarLibrosYListasFlashcards();  
-            usuario.insertarPers(); 
-        }
     }
 
     public void agregarNuevaListaFlashcards(int index, String tema){
