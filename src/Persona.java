@@ -240,9 +240,11 @@ public class Persona{
 
     public ArrayList<Persona> seleccionarPersonas2(){
         try {
+            //Se obtiene la conexión
+            java.sql.Connection conexion = conn.getConn();
             //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
             java.sql.PreparedStatement ps = null;
-            ps = ((Connection) conn).prepareStatement(SEL_PERS);
+            ps = conexion.prepareStatement(SEL_PERS);
             ResultSet rs = ps.executeQuery();
     
             //Crear el arreglo de personas con las personas de la base de datos
@@ -275,9 +277,11 @@ public class Persona{
 
     public ArrayList<ListaFlashcards> seleccionarListas_Propietairo(String propietario){
         try {
+            //Se obtiene la conexión
+            java.sql.Connection conexion = conn.getConn();
             //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
             java.sql.PreparedStatement ps = null;
-            ps = ((Connection) conn).prepareStatement(SEL_LISTAS_PROPIETARIO);
+            ps = conexion.prepareStatement(SEL_LISTAS_PROPIETARIO);
             ps.setString(2, propietario);
             ResultSet rs = ps.executeQuery();
     
@@ -308,9 +312,11 @@ public class Persona{
 
     public ArrayList<Libro> seleccionarLibros2(String propietario){
         try {
+            //Se obtiene la conexión
+            java.sql.Connection conexion = conn.getConn();
             //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
             java.sql.PreparedStatement ps = null;
-            ps = ((Connection) conn).prepareStatement(SEL_LIBROS_PROPIETARIO);
+            ps = conexion.prepareStatement(SEL_LIBROS_PROPIETARIO);
             ps.setString(5, propietario);
             ResultSet rs = ps.executeQuery();
     

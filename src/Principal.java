@@ -13,11 +13,15 @@ public class Principal{
      * @param args
      */
     public static void main (String[] args){
+        
         Scanner teclado = new Scanner (System.in);
         Aplicacion app = new Aplicacion();
         Random rand = new Random();
         int opcion = 0;
         boolean continuar = true;
+
+        //app.llenarListasUsuarios();
+        //app.insertarInfoBaseDeDatos();
         
         String menu = "\n===== LERNEN =====\n1. Crear Usuario. \n2. Iniciar sesión  \n3. Salir. ";
         
@@ -32,7 +36,7 @@ public class Principal{
                 switch (opcion){
                     case 1:{ //Crear usuario
                         boolean entradaInco = true;
-                        System.out.println("=====BIENVENIDO=====");
+                        System.out.println("===== BIENVENIDO =====");
                         while(entradaInco){
                             System.out.println("Ingrese su nombre de usuario: ");
                             String nombre = teclado.nextLine();
@@ -204,6 +208,12 @@ public class Principal{
                                         salir2 = false;
                                         break;
                                     }
+
+                                    default:{
+                                        System.out.println("Las opciones permitidas son entre 1 a 6.");
+                                        break;
+                                    }
+
                                 }
                             }
                         }
@@ -214,13 +224,14 @@ public class Principal{
                         break;
                     }
                     
-                    case 3: {
+                    case 3: { //Salir
+                        //app.actualizarDatos();
                         continuar = false;
                         break;
                     }
                         
                     default:{
-                        System.out.println("Las opciones permitidas son entre 1 a 8.");
+                        System.out.println("Las opciones permitidas son entre 1 a 3.");
                         break;
                     }
 

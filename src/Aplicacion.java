@@ -23,18 +23,26 @@ public class Aplicacion{
 
     public Aplicacion() {
         usuarios = new ArrayList<Persona>();
+        conn = new Conexion();
     }
 
     public Aplicacion( ArrayList <Persona> usuarios) {
         this.usuarios = usuarios;
+        conn = new Conexion();
     }
 
+    
+    /** 
+     * @return ArrayList<Persona>
+     */
     //Base de datos
     public ArrayList<Persona> seleccionarPersonas2(){
         try {
+            //Se obtiene la conexión
+            java.sql.Connection conexion = conn.getConn();
             //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
             java.sql.PreparedStatement ps = null;
-            ps = ((Connection) conn).prepareStatement(SEL_PERS);
+            ps = conexion.prepareStatement(SEL_PERS);
             ResultSet rs = ps.executeQuery();
     
             //Crear el arreglo de personas con las personas de la base de datos
@@ -72,7 +80,27 @@ public class Aplicacion{
         }
     }
 
+    public void insertarInfoBaseDeDatos(){
+        for (Persona usuario : usuarios) {
+            usuario.insertarLibrosYListasFlashcards();  
+            usuario.insertarPers(); 
+        }
+    }
+
+    public void actualizarDatos(){
+        for (Persona usuario : usuarios) {
+            usuario.modificarPersona();
+        }
+    }
+    
     //Métodos
+    
+    /** 
+     * @param usuario
+     * @param contrasena
+     * @return int
+     * Método para verificar que el usuario existe y obtener su indice en la lista de usuarios.
+     */
 
     public int confirmar(String usuario, String contrasena){
         int index = -1;
@@ -86,6 +114,14 @@ public class Aplicacion{
         return index;
     }
 
+    
+    /** 
+     * @param nombre
+     * @param contrasenia
+     * @param carnet
+     * @return boolean
+     * Método para crear un usuario
+     */
     public boolean crear(String nombre, String contrasenia, String carnet){
         boolean creacion = true;
         Persona nuevousu = new Persona(nombre, "", carnet, contrasenia, 0);
@@ -94,11 +130,19 @@ public class Aplicacion{
         }
         else if (existente(nombre, carnet) == false){
             usuarios.add(nuevousu);
+            nuevousu.insertarPers();
         }
         return creacion;
         
     }
 
+    
+    /** 
+     * @param nombre
+     * @param carnet
+     * @return boolean
+     * Es para verificar nombre y carnet de los usuarios. 
+     */
     public boolean existente(String nombre, String carnet){
         boolean existe = false;
         for(Persona per : usuarios){
@@ -109,44 +153,86 @@ public class Aplicacion{
         return existe;
     }
 
+    
+    /** 
+     * @param index
+     * @param nombre
+     * @param tema
+     * @param paginas
+     * @param idioma
+     * Método que agregar un libro dentro de la lista de libros leidos.
+     */
     public void agregarlibro(int index, String nombre, String tema, int paginas, String idioma){
         Persona usuariotem = usuarios.get(index);
         String nombrePropietario = usuariotem.getNombre();
         usuariotem.agregarLibro(nombre, tema, paginas, idioma);
     }
 
-    public void insertarInfoBaseDeDatos(){
-        for (Persona usuario : usuarios) {
-            usuario.insertarLibrosYListasFlashcards();  
-            usuario.insertarPers(); 
-        }
-    }
-
+    
+    /** 
+     * @param index
+     * @param tema
+     * Método para crear una lista que crea y agrega una lista de flashcards. 
+     */
     public void agregarNuevaListaFlashcards(int index, String tema){
         Persona usuariotem = usuarios.get(index);
         usuariotem.agregarNuevaListaFlashcards(tema);
     }
     
+    
+    /** 
+     * @param index
+     * @return String
+     * Método para mostrar libros 
+     */
     public String mostrarLibros(int index){
         Persona usuariotem = usuarios.get(index);
         return usuariotem.mostrarLibros();
     }
     
+    
+    /** 
+     * @param index
+     * @param numLista
+     * @param lado1
+     * @param lado2
+     * Método para crear una flashcard. 
+     */
     public void agregarFlashcard2(int index, int numLista, String lado1, String lado2){
         Persona usuariotem = usuarios.get(index);
         usuariotem.agregarFlashcard2(numLista, lado1, lado2);
     }
     
+    
+    /** 
+     * @param index
+     * @return String
+     * Método para mostrar las listas de flashcards que estan creadas en el perfil del usuario. 
+     */
     public String desplegarListas(int index){
         Persona usuariotem = usuarios.get(index);
         return usuariotem.desplegarListas();
     }
     
+    
+    /** 
+     * @param index
+     * @param numLista
+     * @return String
+     * Método que muestra elementos especificos de una lista de flashcard. 
+     */
     public String desplegarListaEsp(int index, int numLista){
         Persona usuariotem = usuarios.get(index);
         return usuariotem.desplegarListaEspecifica(numLista);
     }
 
+    
+    /** 
+     * @param index
+     * @param numLista
+     * @return int
+     * Método para obtener la cantidad de flashcards que tiene un usuario.
+     */
     public int cantidadFlashcards(int index, int numLista){
         Persona usuariotem = usuarios.get(index);
         ArrayList<ArrayList<String>> lista = usuariotem.retornarLados(numLista);
@@ -155,6 +241,14 @@ public class Aplicacion{
         
     }
     
+    
+    /** 
+     * @param index
+     * @param numLista
+     * @param flashcard
+     * @return String
+     * Método que muestra el lado uno de la flashcard. 
+     */
     public String mostrarLado1(int index, int numLista, int flashcard){
         Persona usuariotem = usuarios.get(index);
         ArrayList<ArrayList<String>> lista = usuariotem.retornarLados(numLista);
@@ -163,6 +257,15 @@ public class Aplicacion{
         
     }
     
+    
+    /** 
+     * @param index
+     * @param numLista
+     * @param flashcard
+     * @param lado2
+     * @return boolean
+     * Método que verifica que el lado dos de la flashcard coincida con la respuesta dada por el usuario. 
+     */
     public boolean verificarLado2(int index, int numLista, int flashcard, String lado2){
         boolean resultado = false;
         Persona usuariotem = usuarios.get(index);
@@ -176,6 +279,11 @@ public class Aplicacion{
         
     }
 
+    
+    /** 
+     * @param index
+     * Método que guarda la cantidad de listas estudiadas correctamente. 
+     */
     public void agregarListaEstudiada(int index){
         Persona usuariotem = usuarios.get(index);
         int cantidad = usuariotem.getListasEstudiadas();
@@ -183,28 +291,54 @@ public class Aplicacion{
 
     }
 
+    
+    /** 
+     * @param index
+     * @return String
+     * Método que muestra las metas cumplidas por usuario. 
+     */
     public String metas(int index){
         Persona usuariotem = usuarios.get(index);
         return usuariotem.metas();
 
     }
 
+    
+    /** Devuelve la lista de usuarios
+     * @return ArrayList<Persona>
+     */
     public ArrayList<Persona> getUsuarios() {
         return this.usuarios;
     }
 
+    
+    /** Cambia la lista de usuarios
+     * @param usuarios
+     */
     public void setUsuarios(ArrayList<Persona> usuarios) {
         this.usuarios = usuarios;
     }
 
+    
+    /** 
+     * @return Conexion
+     */
     public Conexion getConn() {
         return this.conn;
     }
 
+    
+    /** 
+     * @param conn
+     */
     public void setConn(Conexion conn) {
         this.conn = conn;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getSEL_PERS() {
         return this.SEL_PERS;
     }

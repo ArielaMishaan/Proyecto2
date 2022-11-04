@@ -39,18 +39,21 @@ public class ListaFlashcards{
         tema = "";
         listaFlashcards = new ArrayList<Flashcard>();
         nombrePropietario = "";
+        conn = new Conexion();
     }
 
     public ListaFlashcards(String tema, ArrayList<Flashcard> listaFlashcards, String nombrePropietario) {
         this.tema = tema;
         this.listaFlashcards = listaFlashcards;
         this.nombrePropietario = nombrePropietario;
+        conn = new Conexion();
     }
 
     public ListaFlashcards(String tema, String nombrePropietario){
         this.tema = tema;
         this.nombrePropietario = nombrePropietario;
         listaFlashcards = new ArrayList<Flashcard>();
+        conn = new Conexion();
     }
 
     //métodos base de datos
@@ -98,9 +101,11 @@ public class ListaFlashcards{
     
     public ArrayList<Flashcard> seleccionarFlashcards_Propietario_NombreLista(String propietario, String lista){
         try {
+            //Se obtiene la conexión
+            java.sql.Connection conexion = conn.getConn();
             //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
             java.sql.PreparedStatement ps = null;
-            ps = ((Connection) conn).prepareStatement(SEL_FLASH_PROPIETARIO);
+            ps = conexion.prepareStatement(SEL_FLASH_PROPIETARIO);
             ps.setString(5, propietario);
             ps.setString(2, lista);
             ResultSet rs = ps.executeQuery();
