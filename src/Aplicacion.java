@@ -130,7 +130,7 @@ public class Aplicacion{
         }
         else if (existente(nombre, carnet) == false){
             usuarios.add(nuevousu);
-            nuevousu.insertarPers();
+            //nuevousu.insertarPers();
         }
         return creacion;
         

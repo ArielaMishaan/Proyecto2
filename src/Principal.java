@@ -96,7 +96,7 @@ public class Principal{
                                         int contador = 0;
                                         int correctas = 0;
                                         System.out.println(app.desplegarListas(index));
-                                        System.out.println("Elija la lista que desea estudiar: (Ingrese el número)");
+                                        System.out.println("\nElija la lista que desea estudiar: (Ingrese el número)");
                                         int n = teclado.nextInt();
                                         teclado.nextLine();
                                         int cantidad = app.cantidadFlashcards(index, n);

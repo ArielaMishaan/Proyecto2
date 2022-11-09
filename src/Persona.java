@@ -506,6 +506,7 @@ public class Persona{
      * @param tema
      * @param paginas
      * @param idioma
+     * Método que agregar un libro dentro de la lista de libros leidos.
      */
     public void agregarLibro(String nombre, String tema, int paginas, String idioma){
         Libro actual = new Libro(nombre, tema, paginas, idioma, this.nombre);
@@ -515,6 +516,7 @@ public class Persona{
     
     /** 
      * @param tema
+     * Método para crear una lista que crea y agrega una lista de flashcards.
      */
     public void agregarNuevaListaFlashcards(String tema){
         ArrayList<Flashcard> lista = new  ArrayList<Flashcard>();
@@ -527,6 +529,7 @@ public class Persona{
      * @param numLista
      * @param lado1
      * @param lado2
+     * Método para crear una flashcard. 
      */
     public void agregarFlashcard2(int numLista, String lado1, String lado2){
         ListaFlashcards actual = listaListaFlashcards.get( numLista);
@@ -536,6 +539,7 @@ public class Persona{
     
     /** 
      * @return String
+     * Método para mostrar las listas de flashcards que estan creadas en el perfil del usuario. 
      */
     public String desplegarListas(){
         String resultado = "";
@@ -553,17 +557,24 @@ public class Persona{
     /** 
      * @param num
      * @return String
+     * Método que muestra elementos especificos de una lista de flashcard. 
      */
     public String desplegarListaEspecifica(int num){
         ListaFlashcards actual = listaListaFlashcards.get(num-1);
         return actual.toString();
     }
     
+    /** 
+     * Método que muestra los lados de la flashcard establecida.
+     */
     public ArrayList<ArrayList<String>> retornarLados(int num){
         ListaFlashcards actual = listaListaFlashcards.get(num-1);
         return actual.retornarLados();
     }
 
+    /** 
+     * Método que muestra las metas del usuario
+     */
     public String metas(){
         this.metas = "\nLibros leídos: " + listaLibros.size() + "\nListas estudiadas: " + listasEstudiadas;
         return metas;
@@ -572,6 +583,7 @@ public class Persona{
     
     /** 
      * @return String
+     * Método que imprime todos los atributos de la clase con sus valores.
      */
     @Override
     public String toString() {
