@@ -20,8 +20,8 @@ public class Principal{
         int opcion = 0;
         boolean continuar = true;
 
-        //app.llenarListasUsuarios();
-        //app.insertarInfoBaseDeDatos();
+        app.llenarListasUsuarios();
+        app.insertarInfoBaseDeDatos();
         
         String menu = "\n===== LERNEN =====\n1. Crear Usuario. \n2. Iniciar sesión  \n3. Salir. ";
         
@@ -225,7 +225,7 @@ public class Principal{
                     }
                     
                     case 3: { //Salir
-                        //app.actualizarDatos();
+                        app.actualizarDatos();
                         continuar = false;
                         break;
                     }

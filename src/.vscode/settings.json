@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Users/debbiecohendemishaan/Library/CloudStorage/GoogleDrive-mis22052@uvg.edu.gt/My Drive/Clases/Semestre 2 (2022)/Programación orientada a objetos/Proyecto 2/0 Código/Proyecto2/lib/mysql-connector-j-8.0.31.jar"
+    ]
+}
