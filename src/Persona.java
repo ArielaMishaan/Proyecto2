@@ -1,3 +1,4 @@
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +20,7 @@ public class Persona{
     private String carnet;
     private String contrasenia;
     private int listasEstudiadas;
+    private boolean nuevoUsuario;
 
     //Atributos que interactúan con la base de datos
     private Conexion conn;
@@ -48,12 +50,13 @@ public class Persona{
         carnet = "";
         contrasenia = "";
         listasEstudiadas = 0;
+        nuevoUsuario = true;
         
         //crear la conexión para la base de datos
         conn = new Conexion();
     }
 
-    public Persona(String nombre, ArrayList<Libro> listaLibros, ArrayList<ListaFlashcards> listaListaFlashcards, String metas, String carnet, String contrasenia, int listasEstudiadas) {
+    public Persona(String nombre, ArrayList<Libro> listaLibros, ArrayList<ListaFlashcards> listaListaFlashcards, String metas, String carnet, String contrasenia, int listasEstudiadas, boolean nuevoUsuario) {
         this.nombre = nombre;
         this.listaLibros = listaLibros;
         this.listaListaFlashcards = listaListaFlashcards;
@@ -62,6 +65,7 @@ public class Persona{
         this.contrasenia = contrasenia;
         this.listasEstudiadas = listasEstudiadas;
         conn = new Conexion();
+        this.nuevoUsuario = nuevoUsuario;
     }
 
     public Persona(String nombre, String metas, String carnet, String contrasenia, int listasEstudiadas) {
@@ -73,6 +77,7 @@ public class Persona{
         conn = new Conexion();
         listaLibros = new ArrayList<Libro>();
         listaListaFlashcards = new ArrayList<ListaFlashcards>();
+        nuevoUsuario = true;
     }
 
     //Métodos base de datos
@@ -124,6 +129,7 @@ public class Persona{
 
     public boolean modificarPersona(){
         try{
+            
             //Se obtiene la conexión
             java.sql.Connection conexion = conn.getConn();
             //Se prepara la consulta y se le pide al preparedStatement que permita obtener el valor autogenerado
@@ -135,6 +141,7 @@ public class Persona{
             ps.setString(3,carnet);
             ps.setString(4,contrasenia);
             ps.setInt(5, listasEstudiadas);
+            ps.setString(6,carnet);
 
             //Se ejecuta la consulta
             ps.executeUpdate();
@@ -282,7 +289,7 @@ public class Persona{
             //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
             java.sql.PreparedStatement ps = null;
             ps = conexion.prepareStatement(SEL_LISTAS_PROPIETARIO);
-            ps.setString(2, propietario);
+            ps.setString(1, propietario);
             ResultSet rs = ps.executeQuery();
     
             //Crear el arreglo de personas con las personas de la base de datos
@@ -317,7 +324,7 @@ public class Persona{
             //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
             java.sql.PreparedStatement ps = null;
             ps = conexion.prepareStatement(SEL_LIBROS_PROPIETARIO);
-            ps.setString(5, propietario);
+            ps.setString(1, propietario);
             ResultSet rs = ps.executeQuery();
     
             //Crear el arreglo de personas con las personas de la base de datos
@@ -481,6 +488,14 @@ public class Persona{
      */
     public void setListasEstudiadas(int listasEstudiadas) {
         this.listasEstudiadas = listasEstudiadas;
+    }
+    
+    public boolean getNuevoUsuario(){
+        return this.nuevoUsuario;
+    }
+
+    public void setNuevoUsuario(boolean nuevoUsuario){
+        this.nuevoUsuario = nuevoUsuario;
     }
 
     

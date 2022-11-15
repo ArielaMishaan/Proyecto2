@@ -1,3 +1,4 @@
+
 /**
  * clase que recolecta los datos
  * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan
@@ -26,7 +27,7 @@ public class Conexion {
 	}
 
 	public Conexion(){
-		url = "jdbc:mysql://192.168.64.2/localhost:3306/";
+		url = "jdbc:mysql://localhost:3306/";
 		db = "proyectoPOO";
 		usuario = "root";
 		contrasenia = "";

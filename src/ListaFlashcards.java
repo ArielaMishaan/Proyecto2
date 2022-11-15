@@ -1,3 +1,5 @@
+
+
 /**
  * clase la cual crea una lista de falshcards. Llama al lado uno y dos
  * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan
