@@ -1,4 +1,4 @@
-package src;
+
 
 /**
  * clase la cual crea una lista de falshcards. Llama al lado uno y dos

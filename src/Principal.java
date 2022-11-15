@@ -1,5 +1,3 @@
-package src;
-
 /**
  * clase Main
  * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan
@@ -22,7 +20,7 @@ public class Principal{
         int opcion = 0;
         boolean continuar = true;
 
-        //app.llenarListasUsuarios();
+        app.llenarListasUsuarios();
         //app.insertarInfoBaseDeDatos();
         
         String menu = "\n===== LERNEN =====\n1. Crear Usuario. \n2. Iniciar sesión  \n3. Salir. ";
@@ -228,7 +226,8 @@ public class Principal{
                     }
                     
                     case 3: { //Salir
-                        //app.actualizarDatos();
+                        app.actualizarDatos();
+                        app.insertarInfoBaseDeDatos();
                         continuar = false;
                         break;
                     }

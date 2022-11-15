@@ -1,4 +1,4 @@
-package src;
+
 
 /**
  * clase que recolecta los datos

@@ -1,4 +1,3 @@
-package src;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -79,19 +78,24 @@ public class Aplicacion{
         this.usuarios = seleccionarPersonas2();
         for (Persona usuario : usuarios) {
             usuario.llenarListas();
+            usuario.setNuevoUsuario(false);
         }
     }
 
     public void insertarInfoBaseDeDatos(){
         for (Persona usuario : usuarios) {
-            usuario.insertarLibrosYListasFlashcards();  
-            usuario.insertarPers(); 
+            if(usuario.getNuevoUsuario()){
+                usuario.insertarLibrosYListasFlashcards();  
+                usuario.insertarPers(); 
+            }
         }
     }
 
     public void actualizarDatos(){
         for (Persona usuario : usuarios) {
-            usuario.modificarPersona();
+            if(usuario.getNuevoUsuario() == false){
+                usuario.modificarPersona();
+            }
         }
     }
     
