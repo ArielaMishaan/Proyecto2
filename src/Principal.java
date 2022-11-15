@@ -22,8 +22,8 @@ public class Principal{
         int opcion = 0;
         boolean continuar = true;
 
-        app.llenarListasUsuarios();
-        app.insertarInfoBaseDeDatos();
+        //app.llenarListasUsuarios();
+        //app.insertarInfoBaseDeDatos();
         
         String menu = "\n===== LERNEN =====\n1. Crear Usuario. \n2. Iniciar sesión  \n3. Salir. ";
         
@@ -66,6 +66,7 @@ public class Principal{
                         System.out.println("Ingrese su contraseña: ");
                         String contrasena = teclado.nextLine();
                         int index = app.confirmar(usuario, contrasena);
+                        
                         if(index >= 0){
                             while(salir2){
 
@@ -98,7 +99,7 @@ public class Principal{
                                         int contador = 0;
                                         int correctas = 0;
                                         System.out.println(app.desplegarListas(index));
-                                        System.out.println("Elija la lista que desea estudiar: (Ingrese el número)");
+                                        System.out.println("\nElija la lista que desea estudiar: (Ingrese el número)");
                                         int n = teclado.nextInt();
                                         teclado.nextLine();
                                         int cantidad = app.cantidadFlashcards(index, n);
@@ -210,6 +211,12 @@ public class Principal{
                                         salir2 = false;
                                         break;
                                     }
+
+                                    default:{
+                                        System.out.println("Las opciones permitidas son entre 1 a 6.");
+                                        break;
+                                    }
+
                                 }
                             }
                         }
@@ -221,13 +228,13 @@ public class Principal{
                     }
                     
                     case 3: { //Salir
-                        app.actualizarDatos();
+                        //app.actualizarDatos();
                         continuar = false;
                         break;
                     }
                         
                     default:{
-                        System.out.println("Las opciones permitidas son entre 1 a 8.");
+                        System.out.println("Las opciones permitidas son entre 1 a 3.");
                         break;
                     }
 

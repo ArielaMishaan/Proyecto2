@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 31, 2022 at 04:41 PM
+-- Generation Time: Nov 15, 2022 at 08:24 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -29,10 +29,11 @@ USE `proyectoPOO`;
 -- Table structure for table `flashcard`
 --
 
-CREATE TABLE IF NOT EXISTS `flashcard` (
+CREATE TABLE `flashcard` (
+  `nombrePropietario` varchar(50) NOT NULL,
+  `nombreLista` varchar(50) NOT NULL,
   `lado1` varchar(50) NOT NULL,
-  `lado2` varchar(50) NOT NULL,
-  PRIMARY KEY (`lado1`)
+  `lado2` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -41,12 +42,12 @@ CREATE TABLE IF NOT EXISTS `flashcard` (
 -- Table structure for table `Libro`
 --
 
-CREATE TABLE IF NOT EXISTS `Libro` (
+CREATE TABLE `Libro` (
   `nombre` varchar(50) NOT NULL,
   `tema` varchar(50) NOT NULL,
   `paginas` int(11) NOT NULL,
   `idioma` varchar(50) NOT NULL,
-  PRIMARY KEY (`nombre`)
+  `nombrePropietario` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -55,9 +56,9 @@ CREATE TABLE IF NOT EXISTS `Libro` (
 -- Table structure for table `listaFlashcards`
 --
 
-CREATE TABLE IF NOT EXISTS `listaFlashcards` (
+CREATE TABLE `listaFlashcards` (
   `tema` varchar(50) NOT NULL,
-  PRIMARY KEY (`tema`)
+  `nombrePropietario` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -66,13 +67,41 @@ CREATE TABLE IF NOT EXISTS `listaFlashcards` (
 -- Table structure for table `persona`
 --
 
-CREATE TABLE IF NOT EXISTS `persona` (
+CREATE TABLE `persona` (
   `nombre` varchar(50) NOT NULL,
   `metas` varchar(1000) NOT NULL,
   `carnet` varchar(50) NOT NULL,
   `contrasenia` varchar(50) NOT NULL,
-  PRIMARY KEY (`nombre`)
+  `listasEstudiadas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `flashcard`
+--
+ALTER TABLE `flashcard`
+  ADD PRIMARY KEY (`lado1`);
+
+--
+-- Indexes for table `Libro`
+--
+ALTER TABLE `Libro`
+  ADD PRIMARY KEY (`nombre`);
+
+--
+-- Indexes for table `listaFlashcards`
+--
+ALTER TABLE `listaFlashcards`
+  ADD PRIMARY KEY (`tema`);
+
+--
+-- Indexes for table `persona`
+--
+ALTER TABLE `persona`
+  ADD PRIMARY KEY (`nombre`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

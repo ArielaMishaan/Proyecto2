@@ -384,7 +384,7 @@ public class ListaFlashcards{
         int i = 1;
 
         for (Flashcard flashcard : listaFlashcards) {
-            resultado = resultado + "\nFlashcard " + i + "\n " + flashcard.toString();
+            resultado = resultado + "\nFlashcard " + i + "\n" + flashcard.toString();
             i++;
         }
 
