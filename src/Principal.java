@@ -1,3 +1,5 @@
+package src;
+
 /**
  * clase Main
  * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan

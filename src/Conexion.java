@@ -1,3 +1,5 @@
+package src;
+
 /**
  * clase que recolecta los datos
  * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan

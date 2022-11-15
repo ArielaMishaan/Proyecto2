@@ -1,3 +1,5 @@
+package src;
+
 /**
  * clase que crea a los usuarios, persistencia 
  * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan

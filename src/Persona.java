@@ -1,3 +1,5 @@
+package src;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -282,7 +284,7 @@ public class Persona{
             //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
             java.sql.PreparedStatement ps = null;
             ps = conexion.prepareStatement(SEL_LISTAS_PROPIETARIO);
-            ps.setString(2, propietario);
+            ps.setString(1, propietario);
             ResultSet rs = ps.executeQuery();
     
             //Crear el arreglo de personas con las personas de la base de datos
@@ -317,7 +319,7 @@ public class Persona{
             //Se prepara la consulta y se le pide al preparedStatement que permite obteneer el valor autogenerado
             java.sql.PreparedStatement ps = null;
             ps = conexion.prepareStatement(SEL_LIBROS_PROPIETARIO);
-            ps.setString(5, propietario);
+            ps.setString(1, propietario);
             ResultSet rs = ps.executeQuery();
     
             //Crear el arreglo de personas con las personas de la base de datos
