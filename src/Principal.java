@@ -2,6 +2,7 @@
  * clase Main
  * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan
  * @date 07-10-2022
+ * Poo - Proyecto 2
  */
 import java.util.Scanner;
 import java.util.Random;

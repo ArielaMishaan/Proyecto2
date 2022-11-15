@@ -1,7 +1,8 @@
 /**
- * clase la cual crea una lista de falshcards. Llama al lado uno y dos
+ * clase la cual modela una lista de falshcards. Llama al lado uno y dos de la clase Flashcard
  * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan
  * @date 07-10-2022
+ * POO - Proyecto 2
  */
 import java.sql.ResultSet;
 import java.sql.SQLException;

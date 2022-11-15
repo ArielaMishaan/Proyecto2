@@ -5,9 +5,10 @@ import java.time.chrono.JapaneseChronology;
 import java.util.ArrayList;
 
 /**
- * clase controladora
+ * clase que modela a un usuario
  * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan
  * @date 07-10-2022
+ * POO - Proyecto 2
  */
 public class Persona{
     
