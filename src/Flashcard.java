@@ -5,10 +5,9 @@ import java.time.chrono.JapaneseChronology;
 import java.util.ArrayList;
 
 /**
- * clase que modela una flashcard
+ * clase que crea flashcards
  * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan
  * @date 07-10-2022
- * POO - Proyecto 2
  */
 public class Flashcard {
     

@@ -8,7 +8,6 @@ import java.util.ArrayList;
  * clase controladora
  * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan
  * @date 07-10-2022
- * POO - Proyecto 2
  */
 public class Aplicacion{
     

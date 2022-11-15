@@ -4,10 +4,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * clase que modela un libro
+ * clase que crea los libros
  * @authot Alina Carías, Ignacio Mendez, Diego Soto, Ariela Mishaan
  * @date 07-10-2022
- * POO - Proyecto 2
  */
 public class Libro{
     private String nombre;
